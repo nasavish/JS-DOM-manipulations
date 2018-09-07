@@ -4,6 +4,8 @@ var tbody = d3.select("tbody");
 
 submit.on("click", function() {
 
+  d3.selectAll('tr').remove();
+
   d3.event.preventDefault();
 
   var inputElement = d3.select("#alien-form-input");
@@ -16,7 +18,7 @@ submit.on("click", function() {
   filteredData.forEach((filteredSighting) => {
       var row = tbody.append("tr");
       Object.entries(filteredSighting).forEach(([key, value]) => {
-        var cell = tbody.append("td").classed("table table-striped", true);
+        var cell = row.append("td");
         cell.text(value);
       });
     });
